@@ -3,6 +3,9 @@ description: 'Manage local and remote media assets. Have needed configurations o
 type: module
 core_version_requirement: ^9
 dependencies:
+  - drupal:image
+  - drupal:media
+  - drupal:media_library
   - crop:crop
   - focal_point:focal_point
   - media_remote_audio:media_remote_audio
