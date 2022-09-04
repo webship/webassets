@@ -22,9 +22,9 @@
     }
   },
   "require": {
-    "drupal/core": "~9.0",
-    "drupal/crop": "@stable",
-    "drupal/focal_point": "@stable",
-    "drupal/media_remote_audio": "@stable"
+    "drupal/core": "~10.0",
+    "drupal/crop": "~2.0",
+    "drupal/focal_point": "~1.0",
+    "drupal/media_remote_audio": "~1.0"
   }
 }
