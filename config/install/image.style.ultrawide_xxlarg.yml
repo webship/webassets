@@ -1,0 +1,16 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: ultrawide_xxlarg
+label: 'Ultrawide XX Larg'
+effects:
+  eb973eb4-a4be-4e82-88ba-7bc224949593:
+    uuid: eb973eb4-a4be-4e82-88ba-7bc224949593
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 2000
+      height: 858
+      crop_type: focal_point

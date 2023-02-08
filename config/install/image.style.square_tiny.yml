@@ -1,0 +1,16 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: square_tiny
+label: 'Square Tiny'
+effects:
+  288e3eca-e812-430f-be03-33ad55d9c31a:
+    uuid: 288e3eca-e812-430f-be03-33ad55d9c31a
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 200
+      height: 200
+      crop_type: focal_point

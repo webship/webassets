@@ -1,0 +1,36 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - image.style.square_larg
+    - image.style.square_medium
+    - image.style.square_small
+    - image.style.square_xlarg
+    - image.style.square_xxlarg
+  theme:
+    - webtheme
+id: square
+label: Square
+image_style_mappings:
+  -
+    image_mapping_type: image_style
+    image_mapping: square_xxlarg
+    breakpoint_id: webtheme.xl
+    multiplier: 1x
+  -
+    image_mapping_type: image_style
+    image_mapping: square_xlarg
+    breakpoint_id: webtheme.lg
+    multiplier: 1x
+  -
+    image_mapping_type: image_style
+    image_mapping: square_larg
+    breakpoint_id: webtheme.md
+    multiplier: 1x
+  -
+    image_mapping_type: image_style
+    image_mapping: square_medium
+    breakpoint_id: webtheme.sm
+    multiplier: 1x
+breakpoint_group: webtheme
+fallback_image_style: square_small

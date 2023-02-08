@@ -1,0 +1,14 @@
+langcode: en
+status: true
+dependencies: {  }
+name: origenal_small
+label: 'Origenal Small'
+effects:
+  a412bebe-956e-45b3-8f27-b7ecd39ea31c:
+    uuid: a412bebe-956e-45b3-8f27-b7ecd39ea31c
+    id: image_scale
+    weight: 1
+    data:
+      width: 500
+      height: null
+      upscale: false

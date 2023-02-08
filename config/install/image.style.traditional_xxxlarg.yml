@@ -1,0 +1,16 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: traditional_xxxlarg
+label: 'Traditional XXX Larg'
+effects:
+  f93f7dcc-3ea1-4da8-b651-de7a2c8c2ba5:
+    uuid: f93f7dcc-3ea1-4da8-b651-de7a2c8c2ba5
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 3600
+      height: 2700
+      crop_type: focal_point

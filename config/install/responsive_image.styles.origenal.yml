@@ -1,0 +1,36 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - image.style.origenal_larg
+    - image.style.origenal_medium
+    - image.style.origenal_small
+    - image.style.origenal_xlarg
+    - image.style.origenal_xxlarg
+  theme:
+    - webtheme
+id: origenal
+label: Origenal
+image_style_mappings:
+  -
+    image_mapping_type: image_style
+    image_mapping: origenal_xxlarg
+    breakpoint_id: webtheme.xl
+    multiplier: 1x
+  -
+    image_mapping_type: image_style
+    image_mapping: origenal_xlarg
+    breakpoint_id: webtheme.lg
+    multiplier: 1x
+  -
+    image_mapping_type: image_style
+    image_mapping: origenal_larg
+    breakpoint_id: webtheme.md
+    multiplier: 1x
+  -
+    image_mapping_type: image_style
+    image_mapping: origenal_medium
+    breakpoint_id: webtheme.sm
+    multiplier: 1x
+breakpoint_group: webtheme
+fallback_image_style: origenal_small

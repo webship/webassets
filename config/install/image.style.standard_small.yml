@@ -1,0 +1,16 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: standard_small
+label: 'Standard Small'
+effects:
+  58100c73-08f9-46c7-91db-e71840cfc75f:
+    uuid: 58100c73-08f9-46c7-91db-e71840cfc75f
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 500
+      height: 282
+      crop_type: focal_point

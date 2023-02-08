@@ -1,0 +1,16 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: standard_xlarg
+label: 'Standard X Larg'
+effects:
+  e25afdd9-81e7-4ead-b1b1-ce78fcaa268b:
+    uuid: e25afdd9-81e7-4ead-b1b1-ce78fcaa268b
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 1400
+      height: 788
+      crop_type: focal_point

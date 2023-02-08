@@ -1,0 +1,16 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: traditional_medium
+label: 'Traditional Medium'
+effects:
+  b0a768fc-0399-4bb3-a9ea-6400ba571d01:
+    uuid: b0a768fc-0399-4bb3-a9ea-6400ba571d01
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 700
+      height: 525
+      crop_type: focal_point

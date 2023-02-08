@@ -1,0 +1,14 @@
+langcode: en
+status: true
+dependencies: {  }
+name: origenal_medium
+label: 'Origenal Medium'
+effects:
+  07dcf25e-6891-44ba-a4d6-4bee07d94f8f:
+    uuid: 07dcf25e-6891-44ba-a4d6-4bee07d94f8f
+    id: image_scale
+    weight: 1
+    data:
+      width: 700
+      height: null
+      upscale: false

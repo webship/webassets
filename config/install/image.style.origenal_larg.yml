@@ -1,0 +1,14 @@
+langcode: en
+status: true
+dependencies: {  }
+name: origenal_larg
+label: 'Origenal Larg'
+effects:
+  e2292144-9e4e-4b1f-8791-ee474e1b9166:
+    uuid: e2292144-9e4e-4b1f-8791-ee474e1b9166
+    id: image_scale
+    weight: 1
+    data:
+      width: 1000
+      height: null
+      upscale: false

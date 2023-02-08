@@ -1,0 +1,16 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: standard_larg
+label: 'Standard Larg'
+effects:
+  9faa9c6d-691e-4b71-9d33-dc6729191ff4:
+    uuid: 9faa9c6d-691e-4b71-9d33-dc6729191ff4
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 1000
+      height: 563
+      crop_type: focal_point

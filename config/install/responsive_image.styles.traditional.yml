@@ -1,0 +1,36 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - image.style.traditional_larg
+    - image.style.traditional_medium
+    - image.style.traditional_small
+    - image.style.traditional_xlarg
+    - image.style.traditional_xxlarg
+  theme:
+    - webtheme
+id: traditional
+label: Traditional
+image_style_mappings:
+  -
+    image_mapping_type: image_style
+    image_mapping: traditional_xxlarg
+    breakpoint_id: webtheme.xl
+    multiplier: 1x
+  -
+    image_mapping_type: image_style
+    image_mapping: traditional_xlarg
+    breakpoint_id: webtheme.lg
+    multiplier: 1x
+  -
+    image_mapping_type: image_style
+    image_mapping: traditional_larg
+    breakpoint_id: webtheme.md
+    multiplier: 1x
+  -
+    image_mapping_type: image_style
+    image_mapping: traditional_medium
+    breakpoint_id: webtheme.sm
+    multiplier: 1x
+breakpoint_group: webtheme
+fallback_image_style: traditional_small

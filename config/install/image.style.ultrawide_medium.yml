@@ -1,0 +1,16 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: ultrawide_medium
+label: 'Ultrawide Medium'
+effects:
+  9da9114d-2466-46a0-935a-6761ce9ac707:
+    uuid: 9da9114d-2466-46a0-935a-6761ce9ac707
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 700
+      height: 300
+      crop_type: focal_point

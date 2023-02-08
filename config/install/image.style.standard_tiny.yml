@@ -1,0 +1,16 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: standard_tiny
+label: 'Standard Tiny'
+effects:
+  e18f9aaa-9077-4e6d-837a-36c7ff6948ff:
+    uuid: e18f9aaa-9077-4e6d-837a-36c7ff6948ff
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 200
+      height: 113
+      crop_type: focal_point

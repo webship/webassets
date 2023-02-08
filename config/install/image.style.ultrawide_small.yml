@@ -1,0 +1,16 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: ultrawide_small
+label: 'Ultrawide Small'
+effects:
+  a2a33304-0937-4b38-9ca4-27dd35702b4f:
+    uuid: a2a33304-0937-4b38-9ca4-27dd35702b4f
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 500
+      height: 215
+      crop_type: focal_point

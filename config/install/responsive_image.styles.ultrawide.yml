@@ -1,0 +1,36 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - image.style.ultrawide_larg
+    - image.style.ultrawide_medium
+    - image.style.ultrawide_small
+    - image.style.ultrawide_xlarg
+    - image.style.ultrawide_xxlarg
+  theme:
+    - webtheme
+id: ultrawide
+label: Ultrawide
+image_style_mappings:
+  -
+    image_mapping_type: image_style
+    image_mapping: ultrawide_xxlarg
+    breakpoint_id: webtheme.xl
+    multiplier: 1x
+  -
+    image_mapping_type: image_style
+    image_mapping: ultrawide_xlarg
+    breakpoint_id: webtheme.lg
+    multiplier: 1x
+  -
+    image_mapping_type: image_style
+    image_mapping: ultrawide_larg
+    breakpoint_id: webtheme.md
+    multiplier: 1x
+  -
+    image_mapping_type: image_style
+    image_mapping: ultrawide_medium
+    breakpoint_id: webtheme.sm
+    multiplier: 1x
+breakpoint_group: webtheme
+fallback_image_style: ultrawide_small

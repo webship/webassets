@@ -1,0 +1,16 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: traditional_small
+label: 'Traditional Small'
+effects:
+  4c32132c-976c-47df-9a75-8357823bc549:
+    uuid: 4c32132c-976c-47df-9a75-8357823bc549
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 500
+      height: 375
+      crop_type: focal_point

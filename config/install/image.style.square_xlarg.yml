@@ -1,0 +1,16 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: square_xlarg
+label: 'Square X Larg'
+effects:
+  ca716aa5-0592-4b3f-af71-d3fe0cffdfff:
+    uuid: ca716aa5-0592-4b3f-af71-d3fe0cffdfff
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 1400
+      height: 1400
+      crop_type: focal_point

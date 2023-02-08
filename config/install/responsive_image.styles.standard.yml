@@ -1,0 +1,36 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - image.style.standard_larg
+    - image.style.standard_medium
+    - image.style.standard_small
+    - image.style.standard_xlarg
+    - image.style.standard_xxlarg
+  theme:
+    - webtheme
+id: standard
+label: Standard
+image_style_mappings:
+  -
+    image_mapping_type: image_style
+    image_mapping: standard_xxlarg
+    breakpoint_id: webtheme.xl
+    multiplier: 1x
+  -
+    image_mapping_type: image_style
+    image_mapping: standard_xlarg
+    breakpoint_id: webtheme.lg
+    multiplier: 1x
+  -
+    image_mapping_type: image_style
+    image_mapping: standard_larg
+    breakpoint_id: webtheme.md
+    multiplier: 1x
+  -
+    image_mapping_type: image_style
+    image_mapping: standard_medium
+    breakpoint_id: webtheme.sm
+    multiplier: 1x
+breakpoint_group: webtheme
+fallback_image_style: standard_small

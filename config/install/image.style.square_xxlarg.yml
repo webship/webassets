@@ -1,0 +1,16 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: square_xxlarg
+label: 'Square XX Larg'
+effects:
+  a64cc51a-a7f1-4e48-9160-37f544c0ed88:
+    uuid: a64cc51a-a7f1-4e48-9160-37f544c0ed88
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 2000
+      height: 2000
+      crop_type: focal_point
