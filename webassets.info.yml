@@ -4,9 +4,9 @@ type: module
 core_version_requirement: ~10.0
 dependencies:
   - drupal:image
+  - drupal:responsive_image
   - drupal:media
   - drupal:media_library
   - crop:crop
   - focal_point:focal_point
   - media_remote_audio:media_remote_audio
-  - responsive_image:responsive_image
