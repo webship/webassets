@@ -3,9 +3,13 @@ description: 'Manage local and remote media assets. Have needed configurations o
 type: module
 core_version_requirement: ~10.0
 dependencies:
+  - drupal:file
+  - drupal:path
   - drupal:image
   - drupal:media
   - drupal:media_library
+  - drupal:layout_builder
+  - drupal:layout_discovery
   - drupal:responsive_image
   - crop:crop
   - focal_point:focal_point
