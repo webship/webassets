@@ -8,9 +8,10 @@ dependencies:
   - drupal:image
   - drupal:media
   - drupal:media_library
+  - drupal:responsive_image
   - drupal:layout_builder
   - drupal:layout_discovery
-  - drupal:responsive_image
   - crop:crop
   - focal_point:focal_point
   - media_remote_audio:media_remote_audio
+  - webtheme:webtheme
