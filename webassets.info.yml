@@ -14,4 +14,3 @@ dependencies:
   - crop:crop
   - focal_point:focal_point
   - media_remote_audio:media_remote_audio
-  - webtheme:webtheme
