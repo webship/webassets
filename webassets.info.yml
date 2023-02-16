@@ -1,7 +1,8 @@
 name: Web Assets
-description: 'Manage local and remote media assets. Have needed configurations on top of media management and media library.'
+description: "Manage local and remote media assets. Have needed configurations on top of media management and media library."
 type: module
 core_version_requirement: ~10.0
+base_theme: webtheme
 dependencies:
   - drupal:file
   - drupal:path
