@@ -8,29 +8,29 @@ dependencies:
     - image.style.square_xlarg
     - image.style.square_xxlarg
   theme:
-    - webtheme
+    - webassets
 id: square
 label: Square
 image_style_mappings:
   -
     image_mapping_type: image_style
     image_mapping: square_xxlarg
-    breakpoint_id: webtheme.xl
+    breakpoint_id: webassets.xl
     multiplier: 1x
   -
     image_mapping_type: image_style
     image_mapping: square_xlarg
-    breakpoint_id: webtheme.lg
+    breakpoint_id: webassets.lg
     multiplier: 1x
   -
     image_mapping_type: image_style
     image_mapping: square_larg
-    breakpoint_id: webtheme.md
+    breakpoint_id: webassets.md
     multiplier: 1x
   -
     image_mapping_type: image_style
     image_mapping: square_medium
-    breakpoint_id: webtheme.sm
+    breakpoint_id: webassets.sm
     multiplier: 1x
-breakpoint_group: webtheme
+breakpoint_group: webassets
 fallback_image_style: square_small
