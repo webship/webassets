@@ -41,7 +41,6 @@ third_party_settings:
             weight: 0
             additional: {  }
         third_party_settings: {  }
-_core:
 id: media.image.ultrawide
 targetEntityType: media
 bundle: image

@@ -22,7 +22,8 @@
     }
   },
   "require": {
-    "drupal/core": "~10.1.0",
+    "drupal/core": "~10.2.0",
+    "drupal/webpatches": "~10.0",
     "drupal/crop": "~2.0",
     "drupal/focal_point": "~2.0",
     "drupal/media_remote_audio": "~1.0",
