@@ -1,5 +1,5 @@
-name: Webship Default Content Recipe
-description: A recipe to manage default Webship content.
+name: Web Assets Recipe
+description: A recipe for Web assets in websites.
 type: install
 install:
   - file
@@ -16,4 +16,4 @@ install:
   - media_remote_audio
 config:
   import:
-    webassets: *
+    webassets: '*'
