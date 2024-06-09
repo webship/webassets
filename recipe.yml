@@ -14,3 +14,6 @@ install:
   - media
   - media_library
   - media_remote_audio
+config:
+  import:
+    webassets: *
