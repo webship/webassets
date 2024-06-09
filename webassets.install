@@ -1,0 +1,19 @@
+<?php
+
+/**
+ * @file
+ * Contains install and update for Web Assets module.
+ */
+
+use Drupal\Core\Recipe\Recipe;
+use Drupal\Core\Recipe\RecipeRunner;
+
+/**
+ * Implements hook_install().
+ */
+function webassets_install() {
+
+  // Process the default Web Assets recipe.
+  RecipeRunner::processRecipe(Recipe::createFromDirectory(Drupal::service('module_handler')->getModule('webassets')->getPath()));
+
+}

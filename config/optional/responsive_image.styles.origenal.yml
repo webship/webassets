@@ -7,7 +7,7 @@ dependencies:
     - image.style.origenal_small
     - image.style.origenal_xlarg
     - image.style.origenal_xxlarg
-  theme:
+  module:
     - webassets
 id: origenal
 label: Origenal

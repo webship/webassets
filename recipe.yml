@@ -1,0 +1,16 @@
+name: Webship Default Content Recipe
+description: A recipe to manage default Webship content.
+type: install
+install:
+  - file
+  - path
+  - image
+  - responsive_image
+  - block
+  - layout_builder
+  - layout_discovery
+  - crop
+  - focal_point
+  - media
+  - media_library
+  - media_remote_audio

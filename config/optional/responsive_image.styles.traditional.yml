@@ -2,35 +2,35 @@ langcode: en
 status: true
 dependencies:
   config:
-    - image.style.standard_larg
-    - image.style.standard_medium
-    - image.style.standard_small
-    - image.style.standard_xlarg
-    - image.style.standard_xxlarg
-  theme:
+    - image.style.traditional_larg
+    - image.style.traditional_medium
+    - image.style.traditional_small
+    - image.style.traditional_xlarg
+    - image.style.traditional_xxlarg
+  module:
     - webassets
-id: standard
-label: Standard
+id: traditional
+label: Traditional
 image_style_mappings:
   -
     image_mapping_type: image_style
-    image_mapping: standard_xxlarg
+    image_mapping: traditional_xxlarg
     breakpoint_id: webassets.xl
     multiplier: 1x
   -
     image_mapping_type: image_style
-    image_mapping: standard_xlarg
+    image_mapping: traditional_xlarg
     breakpoint_id: webassets.lg
     multiplier: 1x
   -
     image_mapping_type: image_style
-    image_mapping: standard_larg
+    image_mapping: traditional_larg
     breakpoint_id: webassets.md
     multiplier: 1x
   -
     image_mapping_type: image_style
-    image_mapping: standard_medium
+    image_mapping: traditional_medium
     breakpoint_id: webassets.sm
     multiplier: 1x
 breakpoint_group: webassets
-fallback_image_style: standard_small
+fallback_image_style: traditional_small

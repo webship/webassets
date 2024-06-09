@@ -7,7 +7,7 @@ dependencies:
     - image.style.square_small
     - image.style.square_xlarg
     - image.style.square_xxlarg
-  theme:
+  module:
     - webassets
 id: square
 label: Square

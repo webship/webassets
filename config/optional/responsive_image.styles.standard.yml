@@ -2,35 +2,35 @@ langcode: en
 status: true
 dependencies:
   config:
-    - image.style.ultrawide_larg
-    - image.style.ultrawide_medium
-    - image.style.ultrawide_small
-    - image.style.ultrawide_xlarg
-    - image.style.ultrawide_xxlarg
-  theme:
+    - image.style.standard_larg
+    - image.style.standard_medium
+    - image.style.standard_small
+    - image.style.standard_xlarg
+    - image.style.standard_xxlarg
+  module:
     - webassets
-id: ultrawide
-label: Ultrawide
+id: standard
+label: Standard
 image_style_mappings:
   -
     image_mapping_type: image_style
-    image_mapping: ultrawide_xxlarg
+    image_mapping: standard_xxlarg
     breakpoint_id: webassets.xl
     multiplier: 1x
   -
     image_mapping_type: image_style
-    image_mapping: ultrawide_xlarg
+    image_mapping: standard_xlarg
     breakpoint_id: webassets.lg
     multiplier: 1x
   -
     image_mapping_type: image_style
-    image_mapping: ultrawide_larg
+    image_mapping: standard_larg
     breakpoint_id: webassets.md
     multiplier: 1x
   -
     image_mapping_type: image_style
-    image_mapping: ultrawide_medium
+    image_mapping: standard_medium
     breakpoint_id: webassets.sm
     multiplier: 1x
 breakpoint_group: webassets
-fallback_image_style: ultrawide_small
+fallback_image_style: standard_small
