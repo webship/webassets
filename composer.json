@@ -22,7 +22,7 @@
     }
   },
   "require": {
-    "drupal/core": "~11.1.0",
+    "drupal/core": "~11.2.0",
     "drupal/webpatches": "11.0.x-dev",
     "drupal/crop": "~2.0",
     "drupal/focal_point": "~2.0",
