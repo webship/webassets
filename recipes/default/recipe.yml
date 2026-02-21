@@ -1,0 +1,21 @@
+name: Web Assets - Default
+description: A recipe to manage default installed modules, configs and permissions.
+type: install
+install:
+  - file
+  - path
+  - image
+  - media
+  - media_library
+  - responsive_image
+  - layout_builder
+  - layout_discovery
+  - crop
+  - focal_point
+  - media_remote_audio
+config:
+  strict: false
+  import:
+    crop: '*'
+    focal_point: '*'
+    media_remote_audio: '*'
