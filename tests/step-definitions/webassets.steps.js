@@ -50,7 +50,7 @@ Given(/^I am a logged in user with( the)*( username)* "([^"]*)?"( user)?$/, asyn
 /**
  * Provision every non-admin user from cucumber.js worldParameters.users via
  * Drupal's /admin/people/create form. Entries flagged isAdmin: true are
- * skipped (the site-install Webmaster already exists). Idempotent — a
+ * skipped (the site-install Webmaster already exists). Idempotent: a
  * second run reports "name is already taken" and the step swallows it.
  *
  * Must be invoked while logged in as the Webmaster (or any user with the

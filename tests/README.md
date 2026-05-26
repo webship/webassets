@@ -1,4 +1,4 @@
-# Web Assets — tests
+# Web Assets tests
 
 [webship-js](https://www.npmjs.com/package/webship-js) (Playwright + Cucumber-js)
 BDD suite for the Web Assets module.

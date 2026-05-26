@@ -1,0 +1,36 @@
+name: Web Assets foundation
+description: >-
+  Turns on the media stack and creates the seven media types editors will
+  see in the Add media item chooser (Image, Document, Audio, Video, Remote
+  audio, Remote image, Remote video) together with the image styles and
+  view modes they render with.
+type: install
+install:
+  - file
+  - path
+  - image
+  - media
+  - media_library
+  - responsive_image
+  - layout_builder
+  - layout_discovery
+  - crop
+  - focal_point
+  - media_remote_audio
+  - media_remote_image
+config:
+  strict: false
+  import:
+    # Re-import these modules' configs through the recipe pipeline so the
+    # entity storage caches see the form and view mode entities (like
+    # core.entity_form_mode.media.media_library) before the recipe's own
+    # form and view displays try to resolve them. Without this, the recipe
+    # runner's sync-mode install path leaves the mode entities invisible
+    # to load() and the display calculateDependencies call returns null.
+    media: '*'
+    media_library: '*'
+    image: '*'
+    crop: '*'
+    focal_point: '*'
+    media_remote_audio: '*'
+    media_remote_image: '*'

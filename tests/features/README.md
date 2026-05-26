@@ -14,7 +14,7 @@
 | `03-04-01-media-add-audio.feature` | Add Audio form. |
 | `03-05-01-media-add-video.feature` | Add Video form. |
 | `03-06-01-media-add-remote-audio.feature` | Add Remote audio form. |
-| `03-07-01-media-add-remote-image.feature` | Add Remote image form (oembed:image — Flickr / GIPHY / Getty). |
+| `03-07-01-media-add-remote-image.feature` | Add Remote image form (oembed:image, Flickr / GIPHY / Getty). |
 | `04-01-01-media-library-admin.feature` | `/admin/content/media` listing + media-grid view are reachable. |
 | `05-01-01-access-control.feature` | Anonymous users are denied on media admin / media types / image styles / responsive image styles. |
 | `05-02-01-role-access-matrix.feature` | Full access matrix across Webmaster, content editor, authenticated user, anonymous. |

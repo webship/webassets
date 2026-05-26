@@ -1,86 +1,46 @@
 # Web Assets
 
-Manage local and remote media assets. Provides the needed configuration on top
-of Drupal core's media management and media library so a fresh site has a
-production-ready set of media types, image styles, responsive image styles and
-breakpoints — without hand-clicking through the admin UI.
+A ready to use media library for Drupal. Install the module and a fresh site
+gets seven media types (Image, Document, Audio, Video, Remote audio, Remote
+image, Remote video) with sensible image styles, responsive image styles and
+breakpoints already wired up. No manual setup in the admin UI.
 
-Web Assets is part of the [Webship](https://webship.co) toolkit and follows
-the same recipe-on-install pattern as Webpage, Webblog and Webseo: enabling
-the module imports a Drupal Recipe that wires every dependency together.
+Part of the [Webship](https://webship.co) toolkit. Sibling modules: Webpage,
+Webblog, Webseo.
 
-## Key features
-
-* **Seven media types out of the box** — Image, Document, Audio, Video,
-  Remote audio, Remote image, Remote video. Form and view displays are
-  pre-configured for the default and Media Library view modes.
-* **Five responsive image styles** — `origenal`, `square`, `standard`,
-  `traditional`, `ultrawide` — each mapped across the eight Web Assets
-  breakpoints (`sm`, `md`, `lg`, `xl`, `nav-md`, `nav`, `grid-md`, `grid-max`).
-* **Curated image style derivatives** for every aspect ratio (tiny / small /
-  medium / large / xlarg / xxlarg / xxxlarg) so themes can pick the right
-  crop at the right breakpoint without defining new styles.
-* **Crop + Focal Point integration** for art-directed crops on the Image
-  media type.
-* **Remote audio + remote image** support via the
-  [Media Remote Audio](https://www.drupal.org/project/media_remote_audio)
-  and [Media Remote Image](https://www.drupal.org/project/media_remote_image)
-  modules — both use the core oEmbed pipeline (mirroring core's
-  `oembed:video`), so Remote audio, Remote image and Remote video are
-  fully symmetric in admin UI and config.
-* **Layout Builder enabled** on the Image bundle's `standard` view mode so
-  the responsive image renders through Layout Builder sections by default.
-* **Recipe-driven** — all of the above is applied via
-  `recipes/default/recipe.yml`, executed by `hook_install()`. Re-runnable
-  and overridable per site.
-
-## Dependencies
-
-Declared in `webassets.info.yml`:
-
-| Module | Source |
-|--------|--------|
-| `file`, `path`, `image`, `media`, `media_library`, `responsive_image`, `layout_builder`, `layout_discovery` | Drupal core (~11.3) |
-| [`crop`](https://www.drupal.org/project/crop) | Contrib |
-| [`focal_point`](https://www.drupal.org/project/focal_point) | Contrib |
-| [`media_remote_audio`](https://www.drupal.org/project/media_remote_audio) | Contrib |
-| [`media_remote_image`](https://www.drupal.org/project/media_remote_image) | Contrib |
-
-Composer also pulls [`media_directories`](https://www.drupal.org/project/media_directories)
-and [`webpatches`](https://www.drupal.org/project/webpatches) as transitive
-requirements.
-
-## Installation
+## Install
 
 ```bash
 composer require drupal/webassets
 drush en webassets -y
-drush cache:rebuild
 ```
 
-Enabling the module runs `recipes/default/recipe.yml`, which:
+Enabling the module runs the default recipe, which turns on the media stack
+(Media, Media Library, Responsive Image, Layout Builder, Crop, Focal Point,
+Remote Audio, Remote Image) and imports all the configuration the seven
+media types need.
 
-1. Enables every required core + contrib module listed above.
-2. Imports the bundled `crop`, `focal_point` and `media_remote_audio`
-   configuration with `strict: false` (so existing customisations on the
-   target site are preserved).
-3. Installs the six Web Assets media types, their fields, form displays,
-   view displays, view modes, image styles, responsive image styles and
-   breakpoints.
+## What you get
 
-## Recipe
-
-Web Assets is itself shipped as a Drupal Recipe (`recipes/default/`) and can
-be applied with `core/scripts/drupal recipe` against any Drupal 11.3+
-installation that does not already have the module enabled.
-
-```bash
-php core/scripts/drupal recipe modules/contrib/webassets/recipes/default
-```
+* **Seven media types**: Image, Document, Audio, Video, Remote audio,
+  Remote image, Remote video.
+* **Responsive image styles**: `origenal`, `square`, `standard`,
+  `traditional`, `ultrawide`. Each maps onto the eight Web Assets
+  breakpoints.
+* **Image style derivatives** at every aspect ratio (tiny, small, medium,
+  large, xlarg, xxlarg, xxxlarg) so themes pick the right crop per
+  breakpoint without defining their own.
+* **Crop and Focal Point** for art-directed image crops.
+* **Remote audio and remote image** through the same oEmbed pipeline core
+  already uses for Remote video, so all three remote bundles behave the
+  same in the admin UI.
+* **Layout Builder** enabled on the Image bundle's `standard` view mode.
 
 ## Breakpoints
 
-`webassets.breakpoints.yml` registers eight breakpoints:
+`webassets.breakpoints.yml` registers eight breakpoints under the
+`webassets` group. Themes can declare a `breakpoints` group named
+`webassets` to reuse them in their own responsive image styles.
 
 | Key | Media query |
 |-----|-------------|
@@ -93,50 +53,51 @@ php core/scripts/drupal recipe modules/contrib/webassets/recipes/default
 | `webassets.grid-md` | `(min-width: 700px)` |
 | `webassets.grid-max` | `(min-width: 1440px)` |
 
-Themes can declare a `breakpoints` group named `webassets` to reuse them
-in their own responsive image styles.
+## Recipes
+
+Web Assets ships two Drupal recipes under `recipes/`:
+
+* `recipes/default` is the one `webassets_install()` applies. It chains
+  the foundation recipe and then layers Layout Builder displays for the
+  Image bundle on top.
+* `recipes/foundation` does the heavy lifting: enables every dependency
+  module and creates the media types, fields, view modes, image styles
+  and responsive image styles.
+
+Either recipe can be applied standalone on a fresh Drupal 11.3+ site:
+
+```bash
+php core/scripts/drupal recipe modules/contrib/webassets/recipes/default
+```
 
 ## Testing
 
-Web Assets ships a [webship-js](https://www.npmjs.com/package/webship-js)
-(Playwright + Cucumber-js) BDD suite under `tests/`. See `tests/README.md`
-for the full breakdown — the headline numbers are **15 feature files /
-40 scenarios / 164 steps** covering:
-
-* per-role login + automatic provisioning of `content_editor_user` and
-  `authenticated_user`,
-* the presence of every dependency module, media type, responsive image
-  style and image style derivative,
-* the Add forms for all six media bundles (including the oEmbed Video URL
-  field on Remote video),
-* the media library admin listing,
-* the full access-control matrix across Webmaster, content editor,
-  authenticated user and anonymous.
+A [webship-js](https://www.npmjs.com/package/webship-js) (Playwright +
+Cucumber-js) BDD suite lives under `tests/`. See `tests/README.md` for
+the rundown: 16 feature files, 45 scenarios, 182 steps. Coverage spans
+per-role login, every dependency and media type, all seven Add media
+forms, the media library admin and the full access-control matrix.
 
 ### Run locally
 
 ```bash
-# 1. Have the DDEV site up with the module enabled
 ddev start
 ddev drush sql:drop -y
 ddev drush site:install standard \
   --account-name=webmaster --account-pass=dD.123123ddd -y
 ddev drush en webassets -y
 
-# 2. Install deps once
 yarn install
 ./node_modules/.bin/playwright install --with-deps chromium
 
-# 3. Run the suite
 LAUNCH_URL="https://<your-ddev>.ddev.site:33001" yarn test
-yarn test:headed                                 # headed mode
+yarn test:headed     # headed mode
 ```
 
 ### Run the GitLab pipeline locally
 
-A slim sidecar `.gitlab-ci-local.yml` mirrors the canonical
-`webship-js-test` job in a single Playwright container that joins DDEV's
-docker network:
+A slim `.gitlab-ci-local.yml` sidecar runs the same job in a Playwright
+container joined to the DDEV network:
 
 ```bash
 gitlab-ci-local \
@@ -147,13 +108,13 @@ gitlab-ci-local \
 
 ### CI
 
-The canonical pipeline lives at `.gitlab-ci.yml` and runs on
+The canonical pipeline at `.gitlab-ci.yml` runs on
 [drupalci](https://git.drupalcode.org/project/gitlab_templates). The
 first scenario provisions the per-role test users, so the CI
-`before_script` only needs to install Drupal with the Webmaster
-super-admin account.
+`before_script` only installs Drupal with the Webmaster super-admin
+account.
 
-## Issue queue & source
+## Issue queue and source
 
 * Issues: <https://www.drupal.org/project/issues/webassets>
 * Source: <https://git.drupalcode.org/project/webassets>

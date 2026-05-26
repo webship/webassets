@@ -1,12 +1,11 @@
 # Cucumber reports
 
-Run output from the webship-js suite. `cucumber.js` writes:
+Output from the webship-js suite. `cucumber.js` writes two files here:
 
-- `cucumber_report.json` — machine-readable JSON consumed by the HTML
-  generator and CI tooling (JUnit, GitLab artefacts).
-- `cucumber_report.html` — the HTML report rendered by webship-js's
-  built-in formatter after each run.
+- `cucumber_report.json`: machine-readable JSON used by the HTML generator
+  and by CI tooling (JUnit, GitLab artefacts).
+- `cucumber_report.html`: the HTML report rendered by webship-js after
+  each run.
 
-Generated files are gitignored (see the project-root `.gitignore`); this
-folder and the README are tracked so the layout is reproducible after a
-fresh clone.
+Generated files are gitignored. The folder and this README are tracked so
+the layout survives a fresh clone.

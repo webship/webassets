@@ -17,8 +17,8 @@ module.exports = {
       //
       // Webmaster is the site-install super-admin (created by `drush
       // site:install ... --account-name=webmaster --account-pass=dD.123123ddd`).
-      // The rest are provisioned by `Given I add testing users` — see
-      // tests/step-definitions/webpage.steps.js — which iterates this
+      // The rest are provisioned by `Given I add testing users` (see
+      // tests/step-definitions/webassets.steps.js). That step iterates this
       // registry and skips entries flagged `isAdmin: true`.
       users: {
         "Webmaster": {
