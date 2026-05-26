@@ -11,9 +11,9 @@ the module imports a Drupal Recipe that wires every dependency together.
 
 ## Key features
 
-* **Six media types out of the box** — Image, Document, Audio, Video,
-  Remote audio, Remote video. Form and view displays are pre-configured for
-  the default and Media Library view modes.
+* **Seven media types out of the box** — Image, Document, Audio, Video,
+  Remote audio, Remote image, Remote video. Form and view displays are
+  pre-configured for the default and Media Library view modes.
 * **Five responsive image styles** — `origenal`, `square`, `standard`,
   `traditional`, `ultrawide` — each mapped across the eight Web Assets
   breakpoints (`sm`, `md`, `lg`, `xl`, `nav-md`, `nav`, `grid-md`, `grid-max`).
@@ -22,9 +22,12 @@ the module imports a Drupal Recipe that wires every dependency together.
   crop at the right breakpoint without defining new styles.
 * **Crop + Focal Point integration** for art-directed crops on the Image
   media type.
-* **Remote audio** support via the [Media Remote Audio](https://www.drupal.org/project/media_remote_audio)
-  module — embed audio from supported oEmbed providers alongside the core
-  Remote video bundle.
+* **Remote audio + remote image** support via the
+  [Media Remote Audio](https://www.drupal.org/project/media_remote_audio)
+  and [Media Remote Image](https://www.drupal.org/project/media_remote_image)
+  modules — both use the core oEmbed pipeline (mirroring core's
+  `oembed:video`), so Remote audio, Remote image and Remote video are
+  fully symmetric in admin UI and config.
 * **Layout Builder enabled** on the Image bundle's `standard` view mode so
   the responsive image renders through Layout Builder sections by default.
 * **Recipe-driven** — all of the above is applied via
@@ -41,6 +44,7 @@ Declared in `webassets.info.yml`:
 | [`crop`](https://www.drupal.org/project/crop) | Contrib |
 | [`focal_point`](https://www.drupal.org/project/focal_point) | Contrib |
 | [`media_remote_audio`](https://www.drupal.org/project/media_remote_audio) | Contrib |
+| [`media_remote_image`](https://www.drupal.org/project/media_remote_image) | Contrib |
 
 Composer also pulls [`media_directories`](https://www.drupal.org/project/media_directories)
 and [`webpatches`](https://www.drupal.org/project/webpatches) as transitive

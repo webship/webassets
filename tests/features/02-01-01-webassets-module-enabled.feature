@@ -22,3 +22,7 @@ Feature: Web Assets module and required dependencies are enabled
   Scenario: Remote Audio media module is enabled
     When I navigate to "/admin/modules"
     Then I should see "Remote Audio"
+
+  Scenario: Remote Image media module is enabled
+    When I navigate to "/admin/modules"
+    Then I should see "Remote Image"

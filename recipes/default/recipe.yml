@@ -13,9 +13,11 @@ install:
   - crop
   - focal_point
   - media_remote_audio
+  - media_remote_image
 config:
   strict: false
   import:
     crop: '*'
     focal_point: '*'
     media_remote_audio: '*'
+    media_remote_image: '*'

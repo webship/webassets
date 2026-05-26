@@ -23,10 +23,10 @@
   },
   "require": {
     "drupal/core": "~11.3.0",
-    "drupal/webpatches": "11.0.x-dev",
     "drupal/crop": "~2.0",
     "drupal/focal_point": "~2.0",
     "drupal/media_remote_audio": "~1.0",
+    "drupal/media_remote_image": "~1.0",
     "drupal/media_directories": "~2.2.0"
   }
 }

@@ -21,4 +21,5 @@ Feature: Adding an Image media item
      And I should see "Audio"
      And I should see "Video"
      And I should see "Remote audio"
+     And I should see "Remote image"
      And I should see "Remote video"
