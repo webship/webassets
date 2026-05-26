@@ -19,11 +19,13 @@
     "phpcbf": "phpcbf --standard=./.phpcs.xml .",
     "lint:js": "node ./node_modules/eslint/bin/eslint.js .",
     "lint:css": "stylelint \"**/*.css\"",
-    "lint:yaml": "node ./node_modules/eslint/bin/eslint.js --ext .yml ."
+    "lint:yaml": "node ./node_modules/eslint/bin/eslint.js --ext .yml .",
+    "test": "cucumber-js --config cucumber.js",
+    "test:headed": "HEADLESS=false cucumber-js --config cucumber.js"
   },
-  "dependencies": {  },
-  "devDependencies": { 
-    "webship-js": "~1",
+  "dependencies": {},
+  "devDependencies": {
+    "webship-js": "~2.0",
     "eslint": "~8",
     "eslint-config-airbnb-base": "~15",
     "eslint-config-prettier": "~8",
@@ -66,5 +68,6 @@
     "last 1 ChromeAndroid version",
     "last 1 Samsung version",
     "Firefox ESR"
-  ]
+  ],
+  "packageManager": "yarn@4.9.4"
 }

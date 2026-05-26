@@ -1,3 +1,33 @@
 # Ignore node modules
 node_modules
 /*/node_modules
+
+# Ignore local gitlab-ci-local runtime + sidecar config.
+# The canonical pipeline lives in .gitlab-ci.yml; the local CI is per-developer.
+.gitlab-ci-local/
+.gitlab-ci-local.yml
+.cucumber.js.bak
+
+# Ignore Claude Code project-scope MCP config (per-developer tooling).
+.mcp.json
+
+# Test artefacts — ignore generated files but track folders, READMEs and
+# any nested .gitignore so the layout is reproducible after a fresh clone.
+tests/reports/**
+tests/screenshots/**
+tests/videos/**
+!tests/reports/
+!tests/reports/*/
+!tests/reports/**/README.md
+!tests/reports/**/.gitignore
+!tests/screenshots/
+!tests/screenshots/*/
+!tests/screenshots/**/README.md
+!tests/screenshots/**/.gitignore
+!tests/videos/
+!tests/videos/*/
+!tests/videos/**/README.md
+!tests/videos/**/.gitignore
+
+# Playwright MCP working dir
+.playwright-mcp/
