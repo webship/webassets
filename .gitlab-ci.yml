@@ -20,13 +20,21 @@ cspell:
     - cspell "**/*.{php,module,inc,install,test,profile,theme,js,css,md,yml,txt}" --no-progress || true
   allow_failure: true
 
-# Yarn install for the lint jobs only. `--mode=skip-build` skips every
-# package's build/postinstall step: eslint and stylelint need none of it, and
-# it avoids webship-js's postinstall pulling the Playwright browsers (the main
-# reason these jobs used to take several minutes). The lockfile-keyed cache of
-# `.yarn/cache` lets later pipelines reuse the downloaded packages.
+# Shared setup for the fast lint jobs (eslint, stylelint).
+#
+# Three things keep these jobs quick:
+#   1. `dependencies: []` — the lint jobs do NOT need the composer job's build
+#      artifact (the full Drupal tree). Skipping it avoids downloading and then
+#      walking thousands of vendor/ files, which was the main slowdown.
+#   2. `yarn install --mode=skip-build` — skips every package's build/postinstall
+#      step (eslint/stylelint need none, and it avoids webship-js's postinstall
+#      pulling the Playwright browsers). Install drops to ~10s.
+#   3. Lockfile-keyed cache of `.yarn/cache` so later pipelines reuse packages.
+# The paired .eslintignore excludes vendor/, .yarn/, web/ and node_modules/ so
+# `eslint .` only lints real module source.
 .lint-yarn:
   image: node:18
+  dependencies: []
   variables:
     YARN_ENABLE_GLOBAL_CACHE: "false"
   cache:
