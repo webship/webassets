@@ -15,6 +15,7 @@
 - [ ] Add/Change/Fix Documentation
 - [ ] Readability
 - [ ] Accessibility
+- [ ] Reviewed by human
 - [ ] Copywriting Review by maintainers
 - [ ] Credit contributors
 - [ ] Review with the product owner
