@@ -20,12 +20,28 @@ cspell:
     - cspell "**/*.{php,module,inc,install,test,profile,theme,js,css,md,yml,txt}" --no-progress || true
   allow_failure: true
 
-eslint:
-  stage: validate
+# Yarn install for the lint jobs only. `--mode=skip-build` skips every
+# package's build/postinstall step: eslint and stylelint need none of it, and
+# it avoids webship-js's postinstall pulling the Playwright browsers (the main
+# reason these jobs used to take several minutes). The lockfile-keyed cache of
+# `.yarn/cache` lets later pipelines reuse the downloaded packages.
+.lint-yarn:
   image: node:18
+  variables:
+    YARN_ENABLE_GLOBAL_CACHE: "false"
+  cache:
+    key:
+      files:
+        - yarn.lock
+    paths:
+      - .yarn/cache
   before_script:
     - corepack enable
-    - yarn install
+    - yarn install --mode=skip-build
+
+eslint:
+  extends: .lint-yarn
+  stage: validate
   script:
     - yarn lint:js || true
     - yarn lint:yaml || true
@@ -34,11 +50,8 @@ eslint:
   allow_failure: true
 
 stylelint:
+  extends: .lint-yarn
   stage: validate
-  image: node:18
-  before_script:
-    - corepack enable
-    - yarn install
   script:
     - yarn lint:css || true
   after_script:
