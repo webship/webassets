@@ -6,3 +6,7 @@ description: >-
 type: install
 recipes:
   - foundation
+config:
+  # The media displays are re-saved by the modules installed after this
+  # recipe (dependencies recalculated): do not require them to be identical.
+  strict: false

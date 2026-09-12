@@ -1,9 +1,5 @@
-name: Web Assets foundation
-description: >-
-  Turns on the media stack and creates the seven media types editors will
-  see in the Add media item chooser (Image, Document, Audio, Video, Remote
-  audio, Remote image, Remote video) together with the image styles and
-  view modes they render with.
+name: 'Web Assets foundation'
+description: 'Turns on the media stack and creates the seven media types editors will see in the Add media item chooser (Image, Document, Audio, Video, Remote audio, Remote image, Remote video) together with the image styles and view modes they render with.'
 type: install
 install:
   - file
@@ -12,12 +8,12 @@ install:
   - media
   - media_library
   - responsive_image
-  - layout_builder
-  - layout_discovery
   - crop
   - focal_point
   - media_remote_audio
   - media_remote_image
+  - display_builder
+  - display_builder_entity_view
 config:
   strict: false
   import:
@@ -34,3 +30,5 @@ config:
     focal_point: '*'
     media_remote_audio: '*'
     media_remote_image: '*'
+    display_builder:
+      - display_builder.profile.default

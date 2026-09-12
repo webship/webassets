@@ -7,40 +7,29 @@ dependencies:
     - image.style.large
     - media.type.image
   module:
+    - display_builder
     - image
-    - layout_builder
-    - layout_discovery
 third_party_settings:
-  layout_builder:
-    enabled: true
-    allow_custom: false
-    sections:
+  display_builder:
+    profile: default
+    sources:
       -
-        layout_id: layout_onecol
-        layout_settings:
-          label: ''
-        components:
-          7aca0cb1-9e0d-48df-9511-b599254f2e32:
-            uuid: 7aca0cb1-9e0d-48df-9511-b599254f2e32
-            region: content
-            configuration:
-              id: 'field_block:media:image:field_media_image'
-              label: Image
-              label_display: '0'
-              provider: layout_builder
-              context_mapping:
-                entity: layout_builder.entity
-                view_mode: view_mode
-              formatter:
-                type: responsive_image
-                label: visually_hidden
-                settings:
-                  responsive_image_style: square
-                  image_link: ''
-                third_party_settings: {  }
-            weight: 0
-            additional: {  }
-        third_party_settings: {  }
+        source_id: entity_field
+        source:
+          derivable_context: 'field:media:image:field_media_image'
+          'field:media:image:field_media_image':
+            value:
+              sources:
+                -
+                  source_id: 'field_formatter:media:image:field_media_image'
+                  source:
+                    type: responsive_image
+                    label: visually_hidden
+                    settings:
+                      responsive_image_style: square
+                      image_link: ''
+                    third_party_settings: {  }
+                    weight: 0
 id: media.image.square
 targetEntityType: media
 bundle: image
