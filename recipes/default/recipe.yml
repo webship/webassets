@@ -5,6 +5,8 @@ description: >-
   breakpoints and responsive image styles already in place.
 type: install
 recipes:
+  # Permissions below are granted to the content editor role.
+  - core/recipes/content_editor_role
   - foundation
 install:
   # After the foundation recipe: the Web Assets module itself.
@@ -13,3 +15,10 @@ config:
   # The media displays are re-saved by the modules installed after this
   # recipe (dependencies recalculated): do not require them to be identical.
   strict: false
+  actions:
+    # Content editors open the media library and add media of every type.
+    user.role.content_editor:
+      grantPermission: 'access media overview'
+      grantPermissionsForEachMediaType:
+        - 'create %bundle media'
+        - 'edit own %bundle media'
