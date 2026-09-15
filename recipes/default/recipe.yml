@@ -6,6 +6,9 @@ description: >-
 type: install
 recipes:
   - foundation
+install:
+  # After the foundation recipe: the Web Assets module itself.
+  - webassets
 config:
   # The media displays are re-saved by the modules installed after this
   # recipe (dependencies recalculated): do not require them to be identical.
