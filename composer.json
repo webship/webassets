@@ -3,7 +3,6 @@
   "description": "Manage assets of local and remote media types and needed configurations on to of media management and media library.",
   "type": "drupal-module",
   "license": "GPL-2.0-or-later",
-  "minimum-stability": "dev",
   "authors": [
     {
       "name": "Webship",
