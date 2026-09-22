@@ -2,3 +2,24 @@ name: Web Assets
 description: Manage local and remote media assets. Have needed configurations on top of media management and media library.
 type: module
 core_version_requirement: ^11.4 || ^12
+# The modules the default recipe installs. Declared here, so Drupal installs
+# them in the same batch before hook_install() applies the recipe: installing
+# them from inside hook_install() would rebuild the container and leave the
+# config installer of the outer batch in syncing mode, so later modules in the
+# batch would lose their default config entities.
+# The core content_editor_role recipe adds node; the foundation recipe adds
+# the rest.
+dependencies:
+  - drupal:node
+  - drupal:file
+  - drupal:path
+  - drupal:image
+  - drupal:media
+  - drupal:media_library
+  - drupal:responsive_image
+  - crop:crop
+  - focal_point:focal_point
+  - media_remote_audio:media_remote_audio
+  - media_remote_image:media_remote_image
+  - display_builder:display_builder
+  - display_builder:display_builder_entity_view
