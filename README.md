@@ -15,6 +15,23 @@ composer require drupal/webassets
 drush en webassets -y
 ```
 
+Web Assets requires
+[Display Builder](https://www.drupal.org/project/display_builder), whose
+newest release is `1.0.0-beta7` — there is no stable release yet.
+Composer only honours stability flags such as `@beta` in the **root**
+`composer.json`, so the `^1.0@beta` written here is ignored when Web
+Assets is installed as a dependency. Your site's own `composer.json`
+needs:
+
+```json
+{
+    "minimum-stability": "beta",
+    "prefer-stable": true
+}
+```
+
+`prefer-stable` keeps every other package on its stable release.
+
 Enabling the module runs the default recipe, which turns on the media stack
 (Media, Media Library, Responsive Image, Layout Builder, Crop, Focal Point,
 Remote Audio, Remote Image) and imports all the configuration the seven
