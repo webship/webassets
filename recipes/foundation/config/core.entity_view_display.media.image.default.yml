@@ -2,11 +2,31 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.media.image.field_media_image
-    - image.style.large
-    - media.type.image
+  - field.field.media.image.field_media_image
+  - image.style.large
+  - media.type.image
   module:
-    - image
+  - display_builder
+  - image
+third_party_settings:
+  display_builder:
+    profile: default
+    sources:
+    - source_id: entity_field
+      source:
+        derivable_context: 'field:media:image:field_media_image'
+        'field:media:image:field_media_image':
+          value:
+            sources:
+            - source_id: 'field_formatter:media:image:field_media_image'
+              source:
+                type: image
+                label: visually_hidden
+                settings:
+                  image_link: ''
+                  image_style: large
+                third_party_settings: {}
+                weight: 0
 id: media.image.default
 targetEntityType: media
 bundle: image
@@ -18,7 +38,7 @@ content:
     settings:
       image_link: ''
       image_style: large
-    third_party_settings: {  }
+    third_party_settings: {}
     weight: 1
     region: content
 hidden:

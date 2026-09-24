@@ -2,10 +2,28 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.media.document.field_media_document
-    - media.type.document
+  - field.field.media.document.field_media_document
+  - media.type.document
   module:
-    - file
+  - display_builder
+  - file
+third_party_settings:
+  display_builder:
+    profile: default
+    sources:
+    - source_id: entity_field
+      source:
+        derivable_context: 'field:media:document:field_media_document'
+        'field:media:document:field_media_document':
+          value:
+            sources:
+            - source_id: 'field_formatter:media:document:field_media_document'
+              source:
+                type: file_default
+                label: visually_hidden
+                settings: {}
+                third_party_settings: {}
+                weight: 0
 id: media.document.default
 targetEntityType: media
 bundle: document
@@ -14,8 +32,8 @@ content:
   field_media_document:
     type: file_default
     label: visually_hidden
-    settings: {  }
-    third_party_settings: {  }
+    settings: {}
+    third_party_settings: {}
     weight: 1
     region: content
 hidden:

@@ -2,10 +2,32 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.media.audio.field_media_audio_file
-    - media.type.audio
+  - field.field.media.audio.field_media_audio_file
+  - media.type.audio
   module:
-    - file
+  - display_builder
+  - file
+third_party_settings:
+  display_builder:
+    profile: default
+    sources:
+    - source_id: entity_field
+      source:
+        derivable_context: 'field:media:audio:field_media_audio_file'
+        'field:media:audio:field_media_audio_file':
+          value:
+            sources:
+            - source_id: 'field_formatter:media:audio:field_media_audio_file'
+              source:
+                type: file_audio
+                label: visually_hidden
+                settings:
+                  controls: true
+                  autoplay: false
+                  loop: false
+                  multiple_file_display_type: tags
+                third_party_settings: {}
+                weight: 0
 id: media.audio.default
 targetEntityType: media
 bundle: audio
@@ -19,7 +41,7 @@ content:
       autoplay: false
       loop: false
       multiple_file_display_type: tags
-    third_party_settings: {  }
+    third_party_settings: {}
     weight: 0
     region: content
 hidden:
