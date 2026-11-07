@@ -78,8 +78,11 @@ Web Assets ships two Drupal recipes under `recipes/`:
   the foundation recipe and then layers Layout Builder displays for the
   Image bundle on top.
 * `recipes/foundation` does the heavy lifting: enables every dependency
-  module and creates the media types, fields, view modes, image styles
-  and responsive image styles.
+  module and creates the view modes, displays, image styles and
+  responsive image styles.
+* `recipes/media_types` creates the media types and their source fields.
+  The foundation recipe applies it first, so every bundle exists before
+  the first Display Builder display is saved.
 
 Either recipe can be applied standalone on a fresh Drupal 11.3+ site:
 

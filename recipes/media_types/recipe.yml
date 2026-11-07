@@ -1,0 +1,9 @@
+name: 'Web Assets media types'
+description: 'Creates the media types of the foundation recipe and their source fields.'
+type: install
+install:
+  - file
+  - image
+  - media
+config:
+  strict: false

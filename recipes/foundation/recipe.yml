@@ -1,6 +1,10 @@
 name: 'Web Assets foundation'
 description: 'Turns on the media stack and creates the seven media types editors will see in the Add media item chooser (Image, Document, Audio, Video, Remote audio, Remote image, Remote video) together with the image styles and view modes they render with.'
 type: install
+# Every media type and source field exists before the first display is saved:
+# Display Builder derives the contexts of a display from the bundles known then.
+recipes:
+  - media_types
 install:
   - file
   - path
