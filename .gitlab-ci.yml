@@ -14,6 +14,14 @@ variables:
   _TARGET_PHP: "8.4"
   YARN_ENABLE_IMMUTABLE_INSTALLS: "false"
 
+# Override the default composer job: it installs the core release the CI
+# templates call stable and ignores the module's own core constraint, so the
+# DRUPAL_CORE above never reached it. With the constraint kept, Composer takes
+# the newest Drupal 11.4 that PHP 8.4 allows, as in the other Web modules.
+composer:
+  variables:
+    IGNORE_PROJECT_DRUPAL_CORE_VERSION: 0
+
 .composer-base:
   variables:
     # Drupal core's own Yarn 4.9.1 would read the project .yarnrc.yml (Yarn >= 4.14 keys) too.
