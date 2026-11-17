@@ -9,15 +9,15 @@ include:
 # No yarn.lock is committed; Yarn 4 defaults to immutable installs and would
 # refuse to create one. Allow lockfile creation in CI for every job.
 variables:
-  # For now, build and test with Drupal 11.4 and PHP 8.4.
+  # For now, build and test with Drupal 11.4 and PHP 8.5.
   DRUPAL_CORE: "11.4.x-dev"
-  _TARGET_PHP: "8.4"
+  _TARGET_PHP: "8.5"
   YARN_ENABLE_IMMUTABLE_INSTALLS: "false"
 
 # Override the default composer job: it installs the core release the CI
 # templates call stable and ignores the module's own core constraint, so the
 # DRUPAL_CORE above never reached it. With the constraint kept, Composer takes
-# the newest Drupal 11.4 that PHP 8.4 allows, as in the other Web modules.
+# the newest Drupal 11.4 that PHP 8.5 allows, as in the other Web modules.
 composer:
   variables:
     IGNORE_PROJECT_DRUPAL_CORE_VERSION: 0
