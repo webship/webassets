@@ -1,52 +1,101 @@
 # Web Assets tests
 
-[webship-js](https://www.npmjs.com/package/webship-js) (Playwright + Cucumber-js)
-BDD suite for the Web Assets module.
+The behaviour tests of Web Assets: Gherkin features run by
+[webship-js](https://www.npmjs.com/package/webship-js) (Playwright and Cucumber)
+with the Drupal steps of
+[@webship-js/drupal-core-steps](https://www.npmjs.com/package/@webship-js/drupal-core-steps)
+(the login by account handle, access checks, content). `cucumber.js` in the
+project root holds the configuration.
 
-```
-tests/
-├── features/          # *.feature Gherkin scenarios
-├── step-definitions/  # Project-specific Given / When / Then implementations
-├── selectors/         # Per-theme CSS/XPath selector registries (Claro, Gin)
-├── reports/           # cucumber_report.json / .html (gitignored contents)
-├── screenshots/       # PNG captures on failure (gitignored contents)
-└── videos/            # Playwright .webm on failure (gitignored contents)
-```
+| Folder | What it holds |
+| --- | --- |
+| `features/` | the features (16 files, 45 scenarios) |
+| `step-definitions/` | this project's own steps |
+| `selectors/` | named selectors for the administration themes |
+| `reports/`, `screenshots/`, `videos/` | what a run writes (not committed) |
 
-Each subfolder has its own README documenting what lives there.
+## From nothing to a green run
 
-## Quick start
+### 1. A Webship site in DDEV
+
+Web Assets comes with the Webship distribution. Build a site from the
+[Webship project template](https://www.drupal.org/project/webship_project):
 
 ```bash
-# 1. Have the DDEV site up with the module enabled
+mkdir webship-site && cd webship-site
+ddev config --project-type=drupal --docroot=web --database=mysql:8.0
 ddev start
-ddev drush sql:drop -y
-ddev drush site:install standard --account-name=webmaster --account-pass=dD.123123ddd -y
-ddev drush en webassets -y
-
-# 2. Install deps once
-yarn install
-./node_modules/.bin/playwright install --with-deps chromium
-
-# 3. Run the suite
-LAUNCH_URL="https://drupal11webassets.ddev.site:33001" yarn test
+ddev composer create-project drupal/webship_project:12.0.x-dev
+ddev restart
 ```
 
-## Local CI dry-run (gitlab-ci-local)
+### 2. The site, with the test accounts
 
-The project ships a slim `.gitlab-ci-local.yml` sidecar that mirrors the
-`webship-js-test` job and joins the running DDEV network:
+The suite logs in as the accounts that `cucumber.js` lists in
+`worldParameters.users`, and never creates or deletes an account: the site
+build does. Choose three passwords, keep them in your environment, install
+the site with the Webmaster account and add the other two:
 
 ```bash
-gitlab-ci-local \
-  --file .gitlab-ci-local.yml \
-  --network ddev-drupal11webassets_default \
-  webship-js-test
+export DRUPAL_ADMIN_PASS='…' DRUPAL_EDITOR_PASS='…' DRUPAL_AUTHENTICATED_PASS='…'
+ddev drush site:install webship --account-name=webmaster --account-mail=webmaster@example.test --account-pass="$DRUPAL_ADMIN_PASS" -y
+ddev drush user:create content_editor_user --mail=content_editor_user@example.test --password="$DRUPAL_EDITOR_PASS"
+ddev drush user:role:add content_editor content_editor_user
+ddev drush user:create authenticated_user --mail=authenticated_user@example.test --password="$DRUPAL_AUTHENTICATED_PASS"
 ```
 
-## CI
+CI builds a smaller site the same way (the Standard profile and this module, the same accounts with
+passwords made for the job): see the `webship-js-test` job in `.gitlab-ci.yml`.
 
-The canonical pipeline lives at `.gitlab-ci.yml` and runs on drupalci.
-The first scenario in `features/01-01-01-users-login.feature` provisions
-the per-role test users, so the CI before-script only needs to install
-Drupal with the Webmaster super-admin account.
+### 3. Run the suite
+
+From this project's folder, with Node.js 24 and Yarn 4 (through Corepack):
+
+```bash
+corepack enable
+yarn install
+npx playwright install chromium
+export LAUNCH_URL=https://webship-site.ddev.site
+export NODE_EXTRA_CA_CERTS="$(mkcert -CAROOT)/rootCA.pem"
+export DRUPAL_LOGIN_WAIT=3000
+yarn test --tags "not @wip"
+```
+
+`DRUPAL_LOGIN_WAIT` is for the login form of the Webship site, which Honeypot
+protects with a time limit; a site without it needs none.
+`NODE_EXTRA_CA_CERTS` lets Node.js trust DDEV's HTTPS certificate for the
+steps that send a request outside the browser.
+`yarn test:dry` checks that every step resolves to one definition, without
+a browser.
+
+### 4. What green looks like
+
+```
+45 scenarios (45 passed)
+160 steps (160 passed)
+```
+
+The HTML report is written to `tests/reports/cucumber_report.html`. A failed
+step leaves a screenshot in `tests/screenshots/` and a video in
+`tests/videos/`. The suite removes the content it creates, so a second run
+starts from the same site and is green too.
+
+## Test users
+
+The accounts as `cucumber.js` lists them in `worldParameters.users`. Each
+value comes from the environment variable named below; `CHANGE_ME` stands for
+the password you chose in step 2.
+
+```json
+{
+  "Webmaster": { "username": "webmaster", "password": "CHANGE_ME", "email": "webmaster@example.test", "isAdmin": true },
+  "Content editor": { "username": "content_editor_user", "password": "CHANGE_ME", "email": "content_editor_user@example.test", "roles": ["content_editor"] },
+  "Authenticated user": { "username": "authenticated_user", "password": "CHANGE_ME", "email": "authenticated_user@example.test", "roles": [] }
+}
+```
+
+| Handle | Variables | The account |
+| --- | --- | --- |
+| Webmaster | `DRUPAL_ADMIN_USER`, `DRUPAL_ADMIN_PASS`, `DRUPAL_ADMIN_MAIL` | the account the installer created |
+| Content editor | `DRUPAL_EDITOR_USER`, `DRUPAL_EDITOR_PASS`, `DRUPAL_EDITOR_MAIL` | a user with the Content editor role |
+| Authenticated user | `DRUPAL_AUTHENTICATED_USER`, `DRUPAL_AUTHENTICATED_PASS`, `DRUPAL_AUTHENTICATED_MAIL` | a user with no role |

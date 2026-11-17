@@ -93,46 +93,18 @@ php core/scripts/drupal recipe modules/contrib/webassets/recipes/default
 ## Testing
 
 A [webship-js](https://www.npmjs.com/package/webship-js) (Playwright +
-Cucumber-js) BDD suite lives under `tests/`. See `tests/README.md` for
-the rundown: 16 feature files, 45 scenarios, 182 steps. Coverage spans
-per-role login, every dependency and media type, all seven Add media
-forms, the media library admin and the full access-control matrix.
-
-### Run locally
-
-```bash
-ddev start
-ddev drush sql:drop -y
-ddev drush site:install standard \
-  --account-name=webmaster --account-pass=dD.123123ddd -y
-ddev drush en webassets -y
-
-yarn install
-./node_modules/.bin/playwright install --with-deps chromium
-
-LAUNCH_URL="https://<your-ddev>.ddev.site:33001" yarn test
-yarn test:headed     # headed mode
-```
-
-### Run the GitLab pipeline locally
-
-A slim `.gitlab-ci-local.yml` sidecar runs the same job in a Playwright
-container joined to the DDEV network:
-
-```bash
-gitlab-ci-local \
-  --file .gitlab-ci-local.yml \
-  --network ddev-drupal11webassets_default \
-  webship-js-test
-```
+Cucumber-js) BDD suite lives under `tests/`, with the Drupal steps of
+`@webship-js/drupal-core-steps`. Coverage spans per-role login, every
+dependency and media type, all seven Add media forms, the media library
+admin and the full access-control matrix. `tests/README.md` has the full
+install, from a DDEV site to a green run, and the test accounts.
 
 ### CI
 
 The canonical pipeline at `.gitlab-ci.yml` runs on
-[drupalci](https://git.drupalcode.org/project/gitlab_templates). The
-first scenario provisions the per-role test users, so the CI
-`before_script` only installs Drupal with the Webmaster super-admin
-account.
+[drupalci](https://git.drupalcode.org/project/gitlab_templates). Its
+`webship-js-test` job installs Drupal with the module and creates the test
+accounts with drush (passwords made for the job); the suite only logs in.
 
 ## Issue queue and source
 

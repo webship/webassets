@@ -2,8 +2,8 @@
 
 | File | Covers |
 |------|--------|
-| `01-01-01-users-login.feature` | Per-role login (Webmaster + provisioning, content editor, authenticated user). |
-| `02-01-01-webassets-module-enabled.feature` | Web Assets module + Media / Library / Responsive Image / Layout Builder / Crop / Focal Point / Remote Audio / Remote Image are enabled. |
+| `01-01-01-users-login.feature` | Per-role login (Webmaster, content editor, authenticated user); the site build creates the accounts. |
+| `02-01-01-webassets-module-enabled.feature` | Web Assets module + Media / Library / Responsive Image / Display Builder / Crop / Focal Point / Remote Audio / Remote Image are installed. |
 | `02-02-01-media-types-installed.feature` | All seven media types (Audio, Document, Image, Remote audio, Remote image, Remote video, Video) and their edit forms. |
 | `02-03-01-responsive-image-styles.feature` | Origenal / Square / Standard / Traditional / Ultrawide responsive styles + edit forms. |
 | `02-04-01-image-styles.feature` | Web Assets image style derivatives (small / medium / large / xlarg etc.) appear in the image styles list. |
@@ -28,14 +28,8 @@ yarn test:headed                   # headed mode (HEADLESS=false)
 
 ## Test users
 
-`cucumber.js` registers three users for `worldParameters.users`:
-
-| Key | Username | Roles | Provisioned by |
-|-----|----------|-------|----------------|
-| `Webmaster` | `webmaster` | super-admin | `drush site:install --account-name=webmaster --account-pass=dD.123123ddd` |
-| `Content editor` | `content_editor_user` | `content_editor` | First scenario, via `Given I add testing users` |
-| `Authenticated user` | `authenticated_user` | _none_ | First scenario, via `Given I add testing users` |
-
-All passwords are `dD.123123ddd`. The first scenario in
-`01-01-01-users-login.feature` logs in as Webmaster and provisions every
-non-admin user, so no separate drush step is required in CI.
+`cucumber.js` names three accounts in `worldParameters.users`: `Webmaster`,
+`Content editor` and `Authenticated user`. The site build creates them
+(CI with drush, passwords made for the job); no scenario creates or deletes
+an account. The credentials come from the environment: see
+[the Test users in tests/README.md](../README.md#test-users).

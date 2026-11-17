@@ -9,5 +9,5 @@ Feature: Adding a Video media item
   Scenario: Add Video form is reachable
     When I navigate to "/media/add/video"
     Then I should see "Add Video"
-     And I should see "Add a new file"
+     And "input[type='file']" should be attached
      And I should see the button "Save"

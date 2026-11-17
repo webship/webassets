@@ -9,7 +9,7 @@ Feature: Adding an Image media item
   Scenario: Add Image form is reachable and shows the expected file widget
     When I navigate to "/media/add/image"
     Then I should see "Add Image"
-     And I should see "Add a new file"
+     And "input[type='file']" should be attached
      And I should see "Allowed types: png gif jpg jpeg."
      And I should see the button "Save"
 

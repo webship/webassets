@@ -20,30 +20,24 @@ Feature: Web Assets access matrix across Standard profile roles
 
   Scenario: Content editor cannot reach the media types page by default
     Given I am a logged in user with the "Content editor" user
-    When I navigate to "/admin/structure/media"
-    Then I should see "Access denied"
+    Then I should be denied access to "/admin/structure/media"
 
   Scenario: Content editor cannot reach the responsive image styles page by default
     Given I am a logged in user with the "Content editor" user
-    When I navigate to "/admin/config/media/responsive-image-style"
-    Then I should see "Access denied"
+    Then I should be denied access to "/admin/config/media/responsive-image-style"
 
   Scenario: Authenticated user cannot reach the media types page
     Given I am a logged in user with the "Authenticated user" user
-    When I navigate to "/admin/structure/media"
-    Then I should see "Access denied"
+    Then I should be denied access to "/admin/structure/media"
 
   Scenario: Authenticated user cannot reach the media admin listing
     Given I am a logged in user with the "Authenticated user" user
-    When I navigate to "/admin/content/media"
-    Then I should see "Access denied"
+    Then I should be denied access to "/admin/content/media"
 
   Scenario: Anonymous user cannot reach the media admin listing
     Given I am an anonymous user
-    When I navigate to "/admin/content/media"
-    Then I should see "Access denied"
+    Then I should be denied access to "/admin/content/media"
 
   Scenario: Anonymous user cannot reach the media add chooser
     Given I am an anonymous user
-    When I navigate to "/media/add"
-    Then I should see "Access denied"
+    Then I should be denied access to "/media/add"

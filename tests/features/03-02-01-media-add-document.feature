@@ -9,5 +9,5 @@ Feature: Adding a Document media item
   Scenario: Add Document form is reachable
     When I navigate to "/media/add/document"
     Then I should see "Add Document"
-     And I should see "Add a new file"
+     And "input[type='file']" should be attached
      And I should see the button "Save"

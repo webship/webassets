@@ -9,5 +9,5 @@ Feature: Adding an Audio media item
   Scenario: Add Audio form is reachable
     When I navigate to "/media/add/audio"
     Then I should see "Add Audio"
-     And I should see "Add a new file"
+     And "input[type='file']" should be attached
      And I should see the button "Save"

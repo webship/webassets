@@ -7,22 +7,18 @@ Feature: Web Assets module and required dependencies are enabled
     Given I am a logged in user with the "Webmaster" user
 
   Scenario: Web Assets module is listed as enabled
-    When I navigate to "/admin/modules"
-    Then I should see "Web Assets"
-     And I should see "Media"
-     And I should see "Media Library"
-     And I should see "Responsive Image"
-     And I should see "Layout Builder"
+    Then the "webassets" module should be installed
+     And the "media" module should be installed
+     And the "media_library" module should be installed
+     And the "responsive_image" module should be installed
+     And the "display_builder" module should be installed
 
   Scenario: Crop API and Focal Point modules are enabled
-    When I navigate to "/admin/modules"
-    Then I should see "Crop API"
-     And I should see "Focal Point"
+    Then the "crop" module should be installed
+     And the "focal_point" module should be installed
 
   Scenario: Remote Audio media module is enabled
-    When I navigate to "/admin/modules"
-    Then I should see "Remote Audio"
+    Then the "media_remote_audio" module should be installed
 
   Scenario: Remote Image media module is enabled
-    When I navigate to "/admin/modules"
-    Then I should see "Remote Image"
+    Then the "media_remote_image" module should be installed

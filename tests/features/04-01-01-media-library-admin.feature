@@ -11,5 +11,4 @@ Feature: Media library administration
     Then I should see "Media"
 
   Scenario: Admin can reach the media library grid
-    When I navigate to "/admin/content/media-grid"
-    Then I should not see "Access denied"
+    Then I should be allowed access to "/admin/content/media-grid"
